@@ -1,4 +1,4 @@
-import controllers.PersonController;
+import controllers.RegisterController;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -18,14 +18,14 @@ public class Test extends JFrame implements ActionListener, ListSelectionListene
     private JButton buttonAdd;
     private JButton buttonSub;
 
-    private PersonController homeController;
+    private RegisterController homeController;
     private JComboBox jComboBox;
     private JList<String> jList;
     private JScrollPane jScrollPane;
 
     public Test() {
         setLayout(null);
-        homeController = new PersonController();
+        homeController = new RegisterController();
 
         textField = new JTextField();
         textField.setBounds(20, 20, 120, 30);

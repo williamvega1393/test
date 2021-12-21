@@ -1,24 +1,38 @@
 package views.main;
 
-import controllers.PersonController;
+import controllers.MainController;
+import models.PersonModel;
 
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainListener implements ActionListener {
+public class MainListener implements ActionListener, ListSelectionListener {
     private JFrameMain jFrameMain;
-    private PersonController personController;
+    private MainController mainController;
 
     public MainListener(JFrameMain jFrameMain) {
         this.jFrameMain = jFrameMain;
-        personController = new PersonController();
+        mainController = new MainController();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         ActionsMain actionsMain = ActionsMain.valueOf(e.getActionCommand());
         switch (actionsMain) {
-            case SHOW -> personController.getYears(jFrameMain.getjTextField());
+            case SHOW -> mainController.getYears(jFrameMain.getjTextField());
+            case SHOW_REGISTER -> mainController.goToRegister(jFrameMain.getjFrameRegister());
+        }
+    }
+
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        if (e.getSource() == jFrameMain.getjList()) {
+            mainController.goToDetail(
+                    jFrameMain.getjFrameDetail(),
+                    (PersonModel) jFrameMain.getjList().getSelectedValue()
+            );
         }
     }
 }

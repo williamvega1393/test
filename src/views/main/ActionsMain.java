@@ -1,5 +1,5 @@
 package views.main;
 
 public enum ActionsMain {
-    SHOW
+    SHOW, SHOW_REGISTER
 }
