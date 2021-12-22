@@ -29,10 +29,12 @@ public class MainListener implements ActionListener, ListSelectionListener {
     @Override
     public void valueChanged(ListSelectionEvent e) {
         if (e.getSource() == jFrameMain.getjList()) {
-            mainController.goToDetail(
-                    jFrameMain.getjFrameDetail(),
-                    (PersonModel) jFrameMain.getjList().getSelectedValue()
-            );
+            if (jFrameMain.getjList().getValueIsAdjusting()) {
+                mainController.goToDetail(
+                        jFrameMain.getjFrameDetail(),
+                        (PersonModel) jFrameMain.getjList().getSelectedValue()
+                );
+            }
         }
     }
 }
